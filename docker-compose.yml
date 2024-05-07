@@ -1,0 +1,50 @@
+version: '3'
+services:
+  webserver:
+    build:
+      dockerfile: ./Dockerfile 
+    restart: always
+    ports:
+      - 8000:80
+      - 8333:443
+    volumes:
+      - ../web:/var/www/html
+    # depends_on:
+    #   - db
+
+  # web:
+  #   image: ubuntu/apache2
+  #   restart: always
+  #   ports:
+  #     - 8000:80
+  #     - 8333:443
+  #   volumes:
+  #     - ../web:/var/www/html
+  #   depends_on:
+  #     - db
+
+  # apache2:
+  #   build: .
+  #   ports: -8000:80
+  #   volumes:
+  #     - .:/var/www/html
+
+  # php:
+  #   build:
+  #     dockerfile: ./Dockerfile
+  #   depends_on:
+  #     - web
+
+  # db:
+  #   container_name: dbContainer
+  #   image: mariadb
+  #   volumes:
+  #     - ../datadir:/var/lib/mysql
+  #   restart: always
+  #   ports:
+  #     - 9906:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_DATABASE: kwiqapp
+  #     MYSQL_USER: kwiqapp
+  #     MYSQL_PASSWORD: password
